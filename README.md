@@ -8,22 +8,22 @@ Dalam hal ini, Machine Learning dan Predictive Analytics dapat memberikan solusi
 
 Dengan menggunakan model prediksi harga handphone bekas, para penjual dapat memperoleh wawasan yang lebih baik tentang harga yang adil untuk menawarkan handphone mereka, sementara para pembeli dapat menggunakan informasi tersebut untuk menilai apakah harga yang diminta oleh penjual wajar atau tidak.
 
-Keuntungan dari proyek ini adalah:
+Keuntungan dari karya ilmiah ini adalah:
 1. Kemudahan dalam menentukan harga: Dengan model prediksi harga handphone bekas, para penjual dapat dengan lebih mudah menentukan harga yang adil dan kompetitif berdasarkan faktor-faktor yang signifikan.
 2. Efisiensi dalam pembelian: Para pembeli dapat menggunakan model untuk memperkirakan harga yang diharapkan untuk suatu handphone bekas sebelum melakukan pembelian. Hal ini membantu mereka dalam membuat keputusan yang lebih baik dan memperoleh nilai terbaik dari pembelian mereka.
 3. Transparansi pasar: Dengan model prediksi harga yang akurat, transparansi pasar handphone bekas dapat ditingkatkan, membantu penjual dan pembeli dalam melakukan negosiasi yang lebih adil dan efisien.
 
-Dalam pengembangan proyek ini, langkah-langkah yang perlu diambil meliputi pengumpulan data penjualan handphone bekas, persiapan dan pembersihan data, pemilihan dan pelatihan model Machine Learning, serta evaluasi dan pengujian model untuk memastikan keakuratan prediksi harga. Dengan demikian, proyek ini dapat memberikan nilai tambah bagi penjual dan pembeli handphone bekas, membantu mereka dalam mengoptimalkan pengalaman jual beli dan menemukan harga yang adil dalam pasar yang dinamis.
+Dalam pengembangan karya ilmiah ini, langkah-langkah yang perlu diambil meliputi pengumpulan data penjualan handphone bekas, persiapan dan pembersihan data, pemilihan dan pelatihan model Machine Learning, serta evaluasi dan pengujian model untuk memastikan keakuratan prediksi harga. Dengan demikian, karya ilmiah ini dapat memberikan nilai tambah bagi penjual dan pembeli handphone bekas, membantu mereka dalam mengoptimalkan pengalaman jual beli dan menemukan harga yang adil dalam pasar yang dinamis.
 
 ## Business Understanding
 
-Dalam industri jual beli handphone bekas, ada kebutuhan yang signifikan untuk menentukan harga yang tepat untuk handphone bekas. Para penjual ingin menawarkan harga yang adil dan kompetitif, sementara para pembeli ingin memperoleh handphone bekas dengan harga yang wajar. Namun, menentukan harga yang tepat bisa menjadi tantangan karena faktor-faktor yang beragam dan kompleks yang mempengaruhi harga handphone bekas. Dalam hal ini, proyek prediksi harga handphone bekas menggunakan Machine Learning akan memberikan solusi yang berguna untuk para penjual dan pembeli. Dengan memanfaatkan teknologi Machine Learning, proyek ini bertujuan untuk mengembangkan model yang dapat memprediksi harga handphone bekas berdasarkan berbagai faktor seperti merek, model, spesifikasi teknis, usia, kondisi fisik, dan faktor-faktor lainnya.
+Dalam industri jual beli handphone bekas, ada kebutuhan yang signifikan untuk menentukan harga yang tepat untuk handphone bekas. Para penjual ingin menawarkan harga yang adil dan kompetitif, sementara para pembeli ingin memperoleh handphone bekas dengan harga yang wajar. Namun, menentukan harga yang tepat bisa menjadi tantangan karena faktor-faktor yang beragam dan kompleks yang mempengaruhi harga handphone bekas. Dalam hal ini, karya ilmiah prediksi harga handphone bekas menggunakan Machine Learning akan memberikan solusi yang berguna untuk para penjual dan pembeli. Dengan memanfaatkan teknologi Machine Learning, karya ilmiah ini bertujuan untuk mengembangkan model yang dapat memprediksi harga handphone bekas berdasarkan berbagai faktor seperti merek, model, spesifikasi teknis, usia, kondisi fisik, dan faktor-faktor lainnya.
 
 Pemahaman bisnis ini akan membantu penjual handphone bekas dalam menentukan harga yang adil berdasarkan karakteristik dan kondisi handphone yang mereka jual. Dengan menggunakan model prediksi, mereka dapat mengoptimalkan penawaran mereka dan meningkatkan kesempatan untuk menjual handphone bekas dengan harga yang menguntungkan. Di sisi pembeli, pemahaman bisnis ini akan memberikan wawasan yang lebih baik dalam mengevaluasi harga handphone bekas yang mereka minati. Dengan memiliki perkiraan harga yang diharapkan, mereka dapat membuat keputusan yang lebih baik dan memastikan bahwa mereka tidak membayar terlalu mahal atau kurang dari nilai sebenarnya.
 
-Selain itu, dengan adanya model prediksi harga handphone bekas, akan tercipta transparansi pasar yang lebih baik. Penjual dan pembeli akan memiliki panduan yang lebih jelas dalam menentukan harga yang adil, dan hal ini dapat mengurangi negosiasi yang tidak produktif serta meningkatkan efisiensi dalam transaksi jual beli handphone bekas. Dalam rangka pengembangan proyek ini, penting untuk bekerja sama dengan para penjual handphone bekas, pedagang, dan platform jual beli handphone untuk memahami kebutuhan dan perspektif mereka. Dengan memahami dinamika pasar handphone bekas dan tantangan yang dihadapi oleh para pemangku kepentingan, kita dapat mengarahkan proyek ini untuk memberikan solusi yang paling relevan dan bermanfaat.
+Selain itu, dengan adanya model prediksi harga handphone bekas, akan tercipta transparansi pasar yang lebih baik. Penjual dan pembeli akan memiliki panduan yang lebih jelas dalam menentukan harga yang adil, dan hal ini dapat mengurangi negosiasi yang tidak produktif serta meningkatkan efisiensi dalam transaksi jual beli handphone bekas. Dalam rangka pengembangan karya ilmiah ini, penting untuk bekerja sama dengan para penjual handphone bekas, pedagang, dan platform jual beli handphone untuk memahami kebutuhan dan perspektif mereka. Dengan memahami dinamika pasar handphone bekas dan tantangan yang dihadapi oleh para pemangku kepentingan, kita dapat mengarahkan karya ilmiah ini untuk memberikan solusi yang paling relevan dan bermanfaat.
 
-Dengan demikian, proyek prediksi harga handphone bekas menggunakan Machine Learning memiliki potensi untuk meningkatkan efisiensi dan transparansi dalam pasar handphone bekas, memberikan manfaat bagi penjual, pembeli, dan pemangku kepentingan terkait lainnya.
+Dengan demikian, karya ilmiah prediksi harga handphone bekas menggunakan Machine Learning memiliki potensi untuk meningkatkan efisiensi dan transparansi dalam pasar handphone bekas, memberikan manfaat bagi penjual, pembeli, dan pemangku kepentingan terkait lainnya.
 
 ### Problem Statement and Goals
 
@@ -33,9 +33,9 @@ Berdasarkan kondisi yang telah diuraikan sebelumnya, kami akan mengembangkan seb
 2. Ketidakpastian dalam mengevaluasi harga yang wajar: Para pembeli handphone bekas menghadapi kesulitan dalam mengevaluasi apakah harga yang diminta oleh penjual handphone bekas itu wajar atau tidak. Kurangnya informasi dan wawasan yang akurat tentang harga handphone bekas dapat menyebabkan pembeli membayar terlalu mahal atau melewatkan kesempatan untuk memperoleh handphone dengan harga yang lebih baik.
 
 Serta untuk menjawab pertanyaan tersebut, Anda akan membuat predictive modelling dengan tujuan atau goals sebagai berikut:
-1. Membantu penjual menentukan harga yang adil: Tujuan utama proyek ini adalah memberikan panduan kepada penjual handphone bekas dalam menetapkan harga yang adil dan kompetitif berdasarkan karakteristik dan kondisi handphone yang mereka jual. Dengan demikian, para penjual dapat meningkatkan peluang mereka untuk menjual handphone bekas dengan harga yang menguntungkan.
+1. Membantu penjual menentukan harga yang adil: Tujuan utama karya ilmiah ini adalah memberikan panduan kepada penjual handphone bekas dalam menetapkan harga yang adil dan kompetitif berdasarkan karakteristik dan kondisi handphone yang mereka jual. Dengan demikian, para penjual dapat meningkatkan peluang mereka untuk menjual handphone bekas dengan harga yang menguntungkan.
 
-2. Memungkinkan pembeli untuk mengevaluasi harga yang wajar: Proyek ini bertujuan memberikan wawasan yang lebih baik kepada pembeli handphone bekas dalam mengevaluasi harga yang wajar untuk handphone yang mereka minati. Dengan memiliki perkiraan harga yang diharapkan, pembeli dapat membuat keputusan yang lebih baik dan memastikan bahwa mereka tidak membayar terlalu mahal atau kurang dari nilai sebenarnya.
+2. Memungkinkan pembeli untuk mengevaluasi harga yang wajar: karya ilmiah ini bertujuan memberikan wawasan yang lebih baik kepada pembeli handphone bekas dalam mengevaluasi harga yang wajar untuk handphone yang mereka minati. Dengan memiliki perkiraan harga yang diharapkan, pembeli dapat membuat keputusan yang lebih baik dan memastikan bahwa mereka tidak membayar terlalu mahal atau kurang dari nilai sebenarnya.
 
 ### Solution Statement
 
@@ -46,22 +46,22 @@ Data yang diperoleh akan meliputi informasi tentang penjualan handphone bekas, k
 Alasan menggunakan algoritma tersebut karena ke empat algoritma tersebut merupakan yang paling cocok untuk penyelesaian masalah dengan cara regresi.
 
 Algoritma KNN (K-Nearest Neighbors):
-1. KNN adalah algoritma yang sederhana dan mudah dipahami. Karena proyek ini melibatkan prediksi harga berdasarkan fitur-fitur yang relevan, KNN dapat digunakan untuk mencari tetangga terdekat berdasarkan atribut-atribut yang serupa. Hal ini memungkinkan KNN untuk memprediksi harga handphone bekas berdasarkan harga handphone bekas yang memiliki atribut serupa.
+1. KNN adalah algoritma yang sederhana dan mudah dipahami. Karena karya ilmiah ini melibatkan prediksi harga berdasarkan fitur-fitur yang relevan, KNN dapat digunakan untuk mencari tetangga terdekat berdasarkan atribut-atribut yang serupa. Hal ini memungkinkan KNN untuk memprediksi harga handphone bekas berdasarkan harga handphone bekas yang memiliki atribut serupa.
 
 2. KNN memiliki kemampuan untuk menangani data dengan variasi yang tinggi. Dalam kasus ini, handphone bekas memiliki berbagai atribut seperti merek, model, spesifikasi teknis, usia, dan kondisi fisik yang sangat bervariasi. KNN mampu mengatasi variasi ini dengan mengambil kategori tetangga terdekat yang memiliki atribut yang serupa.
 
 Algoritma Boosting:
 1. Boosting adalah algoritma yang mampu meningkatkan performa model dengan menggabungkan beberapa model yang lemah menjadi model yang lebih kuat. Dalam kasus prediksi harga handphone bekas, faktor-faktor yang mempengaruhi harga dapat sangat kompleks dan saling terkait. Dengan menggunakan algoritma Boosting, kita dapat menghasilkan model yang lebih akurat dan dapat menangani hubungan yang kompleks antara fitur-fitur yang ada.
 
-2. Boosting memiliki kemampuan untuk mengatasi overfitting. Dalam proyek ini, kita ingin menghasilkan model yang dapat menggeneralisasi dengan baik pada data baru. Dengan menggunakan teknik Boosting, kita dapat menghindari overfitting dan menghasilkan model yang dapat memberikan prediksi yang lebih konsisten dan akurat pada data baru.
+2. Boosting memiliki kemampuan untuk mengatasi overfitting. Dalam karya ilmiah ini, kita ingin menghasilkan model yang dapat menggeneralisasi dengan baik pada data baru. Dengan menggunakan teknik Boosting, kita dapat menghindari overfitting dan menghasilkan model yang dapat memberikan prediksi yang lebih konsisten dan akurat pada data baru.
 
 Algoritma Linear Regression:
-1. Linear Regression adalah algoritma yang sesuai untuk memodelkan hubungan linier antara variabel dependen dan variabel independen. Dalam proyek ini, kita ingin memprediksi harga handphone bekas berdasarkan beberapa fitur seperti spesifikasi teknis, usia, dan kondisi fisik. Linear Regression dapat membantu dalam memodelkan hubungan linier antara fitur-fitur tersebut dengan harga handphone bekas.
+1. Linear Regression adalah algoritma yang sesuai untuk memodelkan hubungan linier antara variabel dependen dan variabel independen. Dalam karya ilmiah ini, kita ingin memprediksi harga handphone bekas berdasarkan beberapa fitur seperti spesifikasi teknis, usia, dan kondisi fisik. Linear Regression dapat membantu dalam memodelkan hubungan linier antara fitur-fitur tersebut dengan harga handphone bekas.
 
 2. Linear Regression dapat memberikan interpretasi yang mudah. Dalam kasus prediksi harga handphone bekas, interpretasi dari koefisien regresi dapat memberikan wawasan tentang sejauh mana setiap fitur berkontribusi terhadap harga handphone bekas. Ini dapat membantu penjual dan pembeli dalam memahami faktor-faktor yang mempengaruhi harga dan membuat keputusan yang lebih baik.
 
 Algoritma SVR (Support Vector Regression):
-1. SVR adalah metode regresi yang memanfaatkan konsep-konsep dari Support Vector Machines (SVM). Dalam proyek ini, SVR dapat digunakan untuk memodelkan hubungan kompleks antara fitur-fitur yang ada dengan harga handphone bekas.
+1. SVR adalah metode regresi yang memanfaatkan konsep-konsep dari Support Vector Machines (SVM). Dalam karya ilmiah ini, SVR dapat digunakan untuk memodelkan hubungan kompleks antara fitur-fitur yang ada dengan harga handphone bekas.
 
 2. SVR memiliki kemampuan untuk menangani data yang tidak linear. Dalam banyak kasus, hubungan antara fitur-fitur dan harga handphone bekas mungkin tidak linier. Dengan menggunakan kernel yang sesuai, SVR dapat memetakan data ke ruang fitur yang lebih tinggi dan menemukan hubungan non-linear yang ada antara fitur-fitur dan harga.
 
@@ -338,8 +338,13 @@ Dari hasil tersebut SVR mempunyai nila mse terkecil, sehingga SVR merupakan algo
 
 ## Kesimpulan
 
-Dalam proyek prediksi harga handphone bekas menggunakan Machine Learning, kami menggunakan penggunaan algoritma KNN, Boosting, Linear Regression, dan SVR sebagai solusi untuk menangani permasalahan tersebut, karena algoritma tersebut yang pada umumnya digunakan untuk penyelesaian regresi. Dari keempat algoritma tersebut SVR merupakan yang menghasilkan error MSE terkecil yang berarti model dengan algoritma ini menjadi pilihan yang terbaik. 
+Dalam karya ilmiah prediksi harga handphone bekas menggunakan Machine Learning, kami menggunakan penggunaan algoritma KNN, Boosting, Linear Regression, dan SVR sebagai solusi untuk menangani permasalahan tersebut, karena algoritma tersebut yang pada umumnya digunakan untuk penyelesaian regresi. Dari keempat algoritma tersebut SVR merupakan yang menghasilkan error MSE terkecil yang berarti model dengan algoritma ini menjadi pilihan yang terbaik. 
 
-Dalam pengembangan proyek ini, dapat dipertimbangkan juga penggunaan kombinasi dari algoritma-algoritma tersebut untuk memperoleh hasil prediksi yang optimal. Misalnya, penggunaan KNN untuk menemukan tetangga terdekat berdasarkan atribut serupa, kemudian menggunakan Boosting untuk meningkatkan performa model dengan menggabungkan beberapa model KNN. Selain itu, Linear Regression dan SVR juga dapat digunakan untuk memodelkan hubungan linier dan non-linear yang ada antara fitur-fitur dan harga. 
+Dalam pengembangan karya ilmiah ini, dapat dipertimbangkan juga penggunaan kombinasi dari algoritma-algoritma tersebut untuk memperoleh hasil prediksi yang optimal. Misalnya, penggunaan KNN untuk menemukan tetangga terdekat berdasarkan atribut serupa, kemudian menggunakan Boosting untuk meningkatkan performa model dengan menggabungkan beberapa model KNN. Selain itu, Linear Regression dan SVR juga dapat digunakan untuk memodelkan hubungan linier dan non-linear yang ada antara fitur-fitur dan harga. 
 
-Dengan menggunakan pendekatan ini, proyek prediksi harga handphone bekas dapat memberikan solusi yang akurat dan berguna bagi penjual dan pembeli handphone bekas. Penjual dapat menentukan harga yang adil dan kompetitif, sementara pembeli dapat mengevaluasi harga yang wajar sebelum melakukan pembelian.
+Dengan menggunakan pendekatan ini, karya ilmiah prediksi harga handphone bekas dapat memberikan solusi yang akurat dan berguna bagi penjual dan pembeli handphone bekas. Penjual dapat menentukan harga yang adil dan kompetitif, sementara pembeli dapat mengevaluasi harga yang wajar sebelum melakukan pembelian.
+
+## Referensi
+
+- Ahsan. (2023). Used Phones & Tablets Pricing Dataset. Diakses dari Kaggle: https://www.kaggle.com/datasets/ahsan81/used-handheld-device-data (Diakses pada 4 Juni 2023).
+- S., Subhiksha & Thota, Swathi. (2020). Prediction of Phone Prices Using Machine Learning Techniques. 10.1007/978-981-15-1097-7_65.
