@@ -314,9 +314,6 @@ Evaluasi model dengan membandingkan mean squared error setiap model kemudian cob
 
     # Call mse
     mse
-    
-![alt text](<img width="297" alt="Screenshot 2023-06-05 at 01 40 56" src="https://github.com/renhardjh/Predictive-Analytics-Used-Phone-Price/assets/24643123/45931324-e80d-44fd-8661-ab0fc34d2144">
-)
 
 subplot hasil mse setiap model untuk membandingkannya
 
@@ -324,8 +321,7 @@ subplot hasil mse setiap model untuk membandingkannya
     mse.sort_values(by='test', ascending=False).plot(kind='barh', ax=ax, zorder=3)
     ax.grid(zorder=0)
 
-![alt text](![mse_models](https://github.com/renhardjh/Predictive-Analytics-Used-Phone-Price/assets/24643123/4df217fc-471d-4ae9-99da-833fb5b107b8)
-)
+![alt text](https://github.com/renhardjh/Predictive-Analytics-Used-Phone-Price/blob/main/Images/mse_result.png?raw=true)
 
 ### Predict menggunakan Model
 
@@ -336,8 +332,7 @@ subplot hasil mse setiap model untuk membandingkannya
 
     pd.DataFrame(pred_dict)
 
-![alt text](<img width="837" alt="predict_results" src="https://github.com/renhardjh/Predictive-Analytics-Used-Phone-Price/assets/24643123/74be14e0-a135-4029-b616-99ce24ca81f3">
-)
+![alt text](https://github.com/renhardjh/Predictive-Analytics-Used-Phone-Price/blob/main/Images/prediction_result_table.png?raw=true)
 
 Dari hasil tersebut SVR mempunyai nila mse terkecil, sehingga SVR merupakan algoritma yang paling tepat untuk kasus memprediksi harga ponsel bekas, model SVR inilah yang akan digunakan.
 
