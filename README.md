@@ -96,7 +96,9 @@ Pertama muat data csv menggunakan pandas, masukan dimana lokasi file csv berada.
 
     usedPhones = pd.read_csv('datasets/used_device_data.csv')
     usedPhones
-    
+
+Tabel 1. Data table detail harga ponsel bekas
+
 |index|device\_brand|os|screen\_size|4g|5g|rear\_camera\_mp|front\_camera\_mp|internal\_memory|battery|weight|release\_year|days\_used|normalized\_used\_price|normalized\_new\_price|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 |0|Honor|Android|14\.5|1|0|13\.0|5\.0|64\.0|3020\.0|146\.0|2020|127|4\.307572449|4\.715100245|
@@ -362,6 +364,17 @@ Evaluasi model dengan membandingkan mean squared error setiap model kemudian cob
 
     # Call mse
     mse
+    
+Tabel 2. Data table hasil evaluasi dan error MSE model menggunakan algoritma KNN, LinearRegression, Boosting dan SVR
+
+|index|train|test|
+|---|---|---|
+|KNN|0\.05810997410681817|0\.06510443937695261|
+|Boosting|0\.06941925655211766|0\.07266846006792949|
+|LinearRegression|0\.07162002137770561|0\.06350795701437606|
+|SVR|0\.054928794142694845|0\.057348523829999005|
+
+Dari hasil tersebut SVR mempunyai nilai mse terkecil sebesar 0.0549 pada data train dan 0.05734 pada data test, sehingga SVR merupakan algoritma yang paling tepat untuk kasus memprediksi harga ponsel bekas ini, model SVR inilah yang akan digunakan.
 
 subplot hasil mse setiap model untuk membandingkannya
 
@@ -380,13 +393,15 @@ subplot hasil mse setiap model untuk membandingkannya
 
     pd.DataFrame(pred_dict)
 
+Tabel 3. Data table hasil prediksi model menggunakan algoritma KNN, LinearRegression, Boosting dan SVR
+
 |index|used\_price|prediction\_KNN|prediction\_Boosting|prediction\_LinearRegression|prediction\_SVR|
 |---|---|---|---|---|---|
 |1405|3\.829293358|3\.836164|4\.00855|3\.938171|3\.635009|
 |2734|5\.0540267688|4\.614673|4\.653579|4\.620422|4\.759636|
 |386|4\.210645018|4\.172643|4\.386363|4\.323364|4\.288576|
 
-Dari hasil tersebut SVR mempunyai nila mse terkecil, sehingga SVR merupakan algoritma yang paling tepat untuk kasus memprediksi harga ponsel bekas, model SVR inilah yang akan digunakan.
+Membandingkan hasil prediksi dari setiap algoritma, hasilnya terlihat tidak terlalu berbeda secara signifikan dari setiap model tersebut, namun sesuai dengan evaluasi menggunakan MSE, SVR menghasilkan error paling terkecil.
 
 ## Kesimpulan
 
