@@ -33,9 +33,8 @@ Dengan demikian, karya ilmiah prediksi harga handphone bekas menggunakan _Machin
 ### Problem Statement and Goals
 
 Berdasarkan kondisi yang telah diuraikan sebelumnya, kami akan mengembangkan sebuah sistem prediksi harga _handphone_ bekas untuk menjawab permasalahan berikut:
-1. Sulitnya menentukan harga yang tepat untuk handphone bekas: Para penjual handphone bekas seringkali kesulitan dalam menetapkan harga yang adil dan kompetitif berdasarkan berbagai faktor seperti merek, model, spesifikasi teknis, usia, kondisi fisik, dan faktor-faktor lainnya. Ini dapat mengakibatkan harga yang terlalu tinggi atau terlalu rendah, yang berdampak negatif pada proses jual beli.
-
-2. Ketidakpastian dalam mengevaluasi harga yang wajar: Para pembeli handphone bekas menghadapi kesulitan dalam mengevaluasi apakah harga yang diminta oleh penjual _handphone_ bekas itu wajar atau tidak. Kurangnya informasi dan wawasan yang akurat tentang harga _handphone_ bekas dapat menyebabkan pembeli membayar terlalu mahal atau melewatkan kesempatan untuk memperoleh handphone dengan harga yang lebih baik.
+1. Bagaimana dapat memberikan panduan harga yang akurat untuk penjual dan pembeli _handphone_ bekas?
+2. Bagaimana dapat memberikan informasi yang transparan tentang faktor-faktor yang memengaruhi harga _handphone_ bekas kepada penjual dan pembeli?
 
 Serta untuk menjawab pertanyaan tersebut, Anda akan membuat _predictive_ modelling dengan tujuan atau goals sebagai berikut:
 1. Membantu penjual menentukan harga yang adil: Tujuan utama karya ilmiah ini adalah memberikan panduan kepada penjual _handphone_ bekas dalam menetapkan harga yang adil dan kompetitif berdasarkan karakteristik dan kondisi handphone yang mereka jual. Dengan demikian, para penjual dapat meningkatkan peluang mereka untuk menjual handphone bekas dengan harga yang menguntungkan.
