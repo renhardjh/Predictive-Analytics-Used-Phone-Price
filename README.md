@@ -28,7 +28,7 @@ Pemahaman bisnis ini akan membantu penjual handphone bekas dalam menentukan harg
 
 Selain itu, dengan adanya model prediksi harga handphone bekas, akan tercipta transparansi pasar yang lebih baik. Penjual dan pembeli akan memiliki panduan yang lebih jelas dalam menentukan harga yang adil, dan hal ini dapat mengurangi negosiasi yang tidak produktif serta meningkatkan efisiensi dalam transaksi jual beli _handphone_ bekas. Dalam rangka pengembangan karya ilmiah ini, penting untuk bekerja sama dengan para penjual _handphone_ bekas, pedagang, dan _platform_ jual beli handphone untuk memahami kebutuhan dan perspektif mereka. Dengan memahami dinamika pasar handphone bekas dan tantangan yang dihadapi oleh para pemangku kepentingan, kita dapat mengarahkan karya ilmiah ini untuk memberikan solusi yang paling relevan dan bermanfaat.
 
-Dengan demikian, karya ilmiah prediksi harga handphone bekas menggunakan_ Machine Learning_ memiliki potensi untuk meningkatkan efisiensi dan transparansi dalam pasar handphone bekas, memberikan manfaat bagi penjual, pembeli, dan pemangku kepentingan terkait lainnya.
+Dengan demikian, karya ilmiah prediksi harga handphone bekas menggunakan _Machine Learning_ memiliki potensi untuk meningkatkan efisiensi dan transparansi dalam pasar handphone bekas, memberikan manfaat bagi penjual, pembeli, dan pemangku kepentingan terkait lainnya.
 
 ### Problem Statement and Goals
 
