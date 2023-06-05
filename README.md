@@ -71,7 +71,7 @@ Algoritma SVR (Support Vector Regression):
 
 ## Data Understanding
 
-Data yang kami gunakan merupakan data kumpulan harga handphone bekas yang bersumber dari Kaggle, yang berisi features sebagai berikut:
+Datasets yang gunakan merupakan data kumpulan harga handphone bekas yang bersumber dari Kaggle, yang berisi fitur sebagai berikut:
 
 - **device_brand:** Nama merek pabrikan
 - **os:** OS tempat perangkat berjalan
@@ -401,6 +401,8 @@ Tabel 3. Data table hasil prediksi model menggunakan algoritma KNN, LinearRegres
 |386|4\.210645018|4\.172643|4\.386363|4\.323364|4\.288576|
 
 Membandingkan hasil prediksi dari setiap algoritma, hasilnya terlihat tidak terlalu berbeda secara signifikan dari setiap model tersebut, namun sesuai dengan evaluasi menggunakan MSE, SVR menghasilkan error paling terkecil.
+
+Setelah berhasil membuat model yang mempunyai akurasi yang cukup, model ini selanjutnya bisa dipakai untuk aplikasi appraisal yang menghubungkan penjual dan pembeli handphone bekas, dengan masukan seperti spesifikasi, kondisi perangkat, lama pemakaian, tahun pembelian, merk, penjual dan pembeli bisa dengan yakin melakukan transaksi pembelian atau penjualan _handphone_ bekas.
 
 ## Kesimpulan
 
