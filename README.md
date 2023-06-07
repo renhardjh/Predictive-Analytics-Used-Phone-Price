@@ -91,10 +91,7 @@ Datasets yang gunakan merupakan data kumpulan harga handphone bekas yang bersumb
 
 ### Membaca Data
 
-Pertama muat data csv menggunakan pandas, masukan dimana lokasi file csv berada. Terdapat jumlah data pada table sebanyak 15 kolom dan 3454 baris.
-
-    usedPhones = pd.read_csv('datasets/used_device_data.csv')
-    usedPhones
+Pertama muat data csv menggunakan fungsi pandas, masukan dimana lokasi file csv berada. Dari datasets yang digunakan ini terdapat jumlah data pada table sebanyak 15 kolom dan 3454 baris.
 
 Tabel 1. Data table detail harga ponsel bekas
 
@@ -118,27 +115,13 @@ Dataset mempunyai total 4 fitur kategori dengan tipe data _object_ dan 11 fitur 
 
 Setelah melihat data, selanjutnya lakukan pembersihan data, kita bisa melakukan pengecekan untuk melihat data mana yang berisi value NaN (kosong), kemudian kita bisa atur baik dengan menghapusnya atau dengan mengisi nilai kosong tersebut agar data menjadi terisi semua. Karena data yang saat ini digunakan kemungkinan besar mempunyai outliers, data kosong akan diisi dengan nilai median, dengan cara melakukan looping pada setiap fitur yang mengandung nilai NaN. Kemudian nilai NaN dalam fitur, menghapusnya bukanlah opsi yang tepat, karena datasets kita tidak terlalu banyak, sehingga lebih baik dengan cara menggganti nilai dengan nilai median dimana nilai median tidak akan terpengaruh oleh outlier
 
-    for i in features:
-        a=usedPhones[i].median()
-        print(i,'new value : ', a)
-        usedPhones[i]= usedPhones[i].fillna(a)
-
 Selanjutnya gunakan IQR pada untuk mengeliminasi outliers pada data fitur numerik,
 - Quantile 0.10: Quantile 0.10 (atau persentil ke-10) digunakan untuk menentukan batas bawah (lower) dari nilai-nilai data. Dalam konteks ini, nilai-nilai data yang kurang dari quantile 0.10 akan digantikan dengan nilai quantile 0.10. Ini berarti bahwa data dengan nilai terendah 10% akan dibatasi agar tidak lebih rendah dari nilai ini. Penggunaan quantile 0.10 dapat membantu menghilangkan ekstrem nilai rendah yang mungkin tidak representatif atau mengganggu analisis.
 - Quantile 0.90: Quantile 0.90 (atau persentil ke-90) digunakan untuk menentukan batas atas (upper) dari nilai-nilai data. Dalam konteks ini, nilai-nilai data yang lebih dari quantile 0.90 akan digantikan dengan nilai quantile 0.90. Ini berarti bahwa data dengan nilai tertinggi 10% akan dibatasi agar tidak melebihi nilai ini. Penggunaan quantile 0.90 dapat membantu menghilangkan ekstrem nilai tinggi yang mungkin tidak representatif atau mengganggu analisis.
 
 Dengan membatasi nilai-nilai data pada rentang quantile 0.10 hingga 0.90, kita dapat menghindari potensi pengaruh ekstrem dan membantu dalam analisis yang lebih stabil. Selain itu, dengan mencetak skewness value (nilai skewness) setelah pemrosesan, kita dapat melihat bagaimana pembatasan nilai pada fitur-fitur tersebut telah mempengaruhi kecondongan atau kemiringan distribusi data.
-
-    features=['screen_size','front_camera_mp','ram','battery','weight','normalized_used_price','normalized_new_price']
-    for i in features:
-        lower = usedPhones[i].quantile(0.10)
-        upper = usedPhones[i].quantile(0.90)
-        usedPhones[i] = np.where(usedPhones[i] <lower, lower,usedPhones[i])
-        usedPhones[i] = np.where(usedPhones[i] >upper, upper,usedPhones[i])
-
-    usedPhones.shape
     
-Perlakukan fitur internal_memory, battery dan rear_camera_mp dengan perhitungan yang berbeda, karena mereka memiliki outliers dan skewness yang berbeda:
+Selanjutnya, perlakukan fitur internal_memory, battery dan rear_camera_mp dengan perhitungan yang berbeda, karena mereka memiliki outliers dan skewness yang berbeda:
 - Quantile 0.95 pada fitur "rear_camera_mp":
 Pada bagian ini, digunakan quantile 0.95 untuk menentukan nilai batas atas (upper) dari fitur "rear_camera_mp". Jika nilai pada fitur "rear_camera_mp" lebih besar dari quantile 0.95, maka nilai tersebut akan digantikan dengan nilai quantile 0.95. Dengan melakukan ini, data yang memiliki nilai yang sangat tinggi (outlier) pada fitur "rear_camera_mp" akan dibatasi agar tidak melebihi nilai quantile 0.95.
 - Quantile 0.9 pada fitur "internal_memory":
@@ -150,12 +133,11 @@ Pada bagian ini, digunakan quantile 0.8 untuk menentukan nilai batas atas (upper
 
 Lakukan analisis statistika yang hanya menggunakan satu variabel saja, dan liat persentase data setiap fitur baik itu numerikal maupun kategorikal, kemudian visualisasikan diagram batang kemudian visualisasikan diagram batang semua fitur numerik sehingga kita bisa analisis dan mengambil kesimpulan data tersebut
 
-    usedPhones.hist(bins=40, figsize=(18,12))
-    plt.show()
+Berikut hasil visualisasinya
 
 ![all text](https://github.com/renhardjh/Predictive-Analytics-Used-Phone-Price/blob/main/Images/Visuallize%20bar%20chart%20numerical_features.png?raw=true)
 
-Berikut kesimpulan informasi dari data yang bisa didapat
+Dari hasil visualisasi tersebut, kesimpulan informasi dyang bisa didapat sebagi berikut:
 
 - Rentang mp kamera depan sebagian besar antara 0-10 mega piksel
 - Memori internal sebagian besar antara 0-100
@@ -264,20 +246,17 @@ Pembentukan model:
 
 ## Evaluasi Model
 
-Evaluasi model dengan membandingkan mean squared error setiap model kemudian coba lakukan prediksi dan bandingkan hasilnya
+Evaluasi model dengan membandingkan mean squared error setiap model kemudian coba lakukan prediksi dan bandingkan hasilnya. Teknik evaluasi model digunakan untuk mengukur kinerja dan keefektifan suatu model machine learning dalam memprediksi atau mengklasifikasikan data yang tidak diketahui. Evaluasi model membantu kita memahami sejauh mana model tersebut dapat melakukan tugasnya dengan akurat dan dapat diandalkan. Untuk kasus prediksi harga umumnya menggunakan Mean Squared Error (MSE). MSE sendiri merupakan metrik evaluasi yang umum digunakan dalam regresi. Metrik ini mengukur rata-rata perbedaan kuadrat antara nilai aktual dan nilai yang diprediksi oleh model. Semakin rendah nilai MSE, semakin baik performa model dalam memprediksi harga
 
-    mse = pd.DataFrame(columns=['train', 'test'], index=['KNN','Boosting','LinearRegression','SVR'])
- 
-    # Create a dictionary for each algorithm used
-    model_dict = {'KNN': knn, 'Boosting': boosting, 'LinearRegression': LG, 'SVR': SVR}
-
-    # Calculate the Mean Squared Error of each algorithm on the train and test data
-    for name, model in model_dict.items():
-        mse.loc[name, 'train'] = mean_squared_error(y_true=y_train, y_pred=model.predict(X_train))
-        mse.loc[name, 'test'] = mean_squared_error(y_true=y_test, y_pred=model.predict(X_test))
-
-    # Call mse
-    mse
+Penggunaan Mean Squared Error (MSE) sebagai metrik evaluasi yang paling tepat dalam kasus prediksi harga ini memiliki beberapa alasan sebagai berikut:
+1. Sensitivitas terhadap Perbedaan Nilai Prediksi:
+   MSE memperhitungkan perbedaan kuadrat antara nilai aktual dan nilai yang diprediksi oleh model. Dalam konteks prediksi harga, perbedaan absolut antara harga aktual dan harga yang diprediksi dapat memiliki dampak yang signifikan terhadap hasil bisnis dan keputusan finansial. Dengan memperhitungkan perbedaan kuadrat, MSE memberikan bobot lebih besar pada perbedaan besar antara harga aktual dan prediksi yang mungkin lebih penting dalam kasus ini.
+2. Menekankan Pada Pemodelan yang Mendekati Nilai Aktual:
+   MSE menekankan pada pemodelan yang mendekati nilai aktual dengan cermat. Hal ini penting dalam konteks prediksi harga karena tujuan utama adalah untuk mencapai prediksi harga yang sesuai dengan harga sebenarnya dengan seakurat mungkin. MSE memberikan penalti yang lebih tinggi pada prediksi yang jauh dari nilai aktual, sehingga mendorong model untuk lebih mendekati harga sebenarnya.
+3. Perhitungan yang Stabil dan Diferensial:
+   MSE memiliki perhitungan yang sederhana dan diferensial, yang memudahkan dalam proses optimisasi dan pemilihan model. Ini memungkinkan penggunaan algoritma optimisasi yang berdasarkan turunan, seperti metode gradien, yang dapat meminimalkan nilai MSE secara efisien.
+   
+Berikut ini hasil evaluasi dari model yang sudah kita lakukan training:
     
 Tabel 2. Data table hasil evaluasi dan error MSE model menggunakan algoritma KNN, LinearRegression, Boosting dan SVR
 
