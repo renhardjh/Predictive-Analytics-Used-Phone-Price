@@ -114,26 +114,16 @@ Tabel 1. Data table detail harga ponsel bekas
 
 Dataset mempunyai total 4 fitur kategori dengan tipe data _object_ dan 11 fitur numerik yang mempunyai tipe data _float_ dan _integer_. Kemudian jika kita melihat dekripsi data, dapat terlihat terdapat informasi seperti rata-rata, standar deviasi, dan lainnya.
 
-    usedPhones.info()
-    
-    usedPhones.describe()
-
 ### Data Cleansing
 
-Setelah melihat data, selanjutnya lakukan pembersihan data, kita bisa melakukan pengecekan untuk melihat data mana yang berisi value NaN (kosong), kemudian kita bisa atur baik dengan menghapusnya atau dengan mengisi nilai kosong tersebut agar data menjadi terisi semua.
-
-    usedPhones.isnull().sum()
-
-Karena data ini kemungkinan besar mempunyai outliers, data kosong akan diisi dengan nilai median, dengan cara melakukan looping pada setiap fitur yang mengandung nilai NaN
+Setelah melihat data, selanjutnya lakukan pembersihan data, kita bisa melakukan pengecekan untuk melihat data mana yang berisi value NaN (kosong), kemudian kita bisa atur baik dengan menghapusnya atau dengan mengisi nilai kosong tersebut agar data menjadi terisi semua. Karena data yang saat ini digunakan kemungkinan besar mempunyai outliers, data kosong akan diisi dengan nilai median, dengan cara melakukan looping pada setiap fitur yang mengandung nilai NaN. Kemudian nilai NaN dalam fitur, menghapusnya bukanlah opsi yang tepat, karena datasets kita tidak terlalu banyak, sehingga lebih baik dengan cara menggganti nilai dengan nilai median dimana nilai median tidak akan terpengaruh oleh outlier
 
     for i in features:
         a=usedPhones[i].median()
         print(i,'new value : ', a)
         usedPhones[i]= usedPhones[i].fillna(a)
-        
-Kemudian nilai NaN dalam fitur, menghapusnya bukanlah opsi yang tepat, karena datasets kita tidak terlalu banyak, sehingga lebih baik dengan cara menggganti nilai dengan nilai median dimana nilai median tidak akan terpengaruh oleh outlier
 
-Selanjutnya gunakan IQR pada untuk mengeliminasi outliers,
+Selanjutnya gunakan IQR pada untuk mengeliminasi outliers pada data fitur numerik,
 - Quantile 0.10: Quantile 0.10 (atau persentil ke-10) digunakan untuk menentukan batas bawah (lower) dari nilai-nilai data. Dalam konteks ini, nilai-nilai data yang kurang dari quantile 0.10 akan digantikan dengan nilai quantile 0.10. Ini berarti bahwa data dengan nilai terendah 10% akan dibatasi agar tidak lebih rendah dari nilai ini. Penggunaan quantile 0.10 dapat membantu menghilangkan ekstrem nilai rendah yang mungkin tidak representatif atau mengganggu analisis.
 - Quantile 0.90: Quantile 0.90 (atau persentil ke-90) digunakan untuk menentukan batas atas (upper) dari nilai-nilai data. Dalam konteks ini, nilai-nilai data yang lebih dari quantile 0.90 akan digantikan dengan nilai quantile 0.90. Ini berarti bahwa data dengan nilai tertinggi 10% akan dibatasi agar tidak melebihi nilai ini. Penggunaan quantile 0.90 dapat membantu menghilangkan ekstrem nilai tinggi yang mungkin tidak representatif atau mengganggu analisis.
 
@@ -158,19 +148,7 @@ Pada bagian ini, digunakan quantile 0.8 untuk menentukan nilai batas atas (upper
     
 ### Analisis Univariate
 
-Hitung persentase data device_brand dan visualisasikan diagram batang
-
-    numerical_features = ['normalized_used_price', 'normalized_new_price', 'screen_size', 'rear_camera_mp', 'front_camera_mp', 'internal_memory', 'battery', 'weight', 'release_year', 'days_used']
-    categorical_features = ['device_brand', 'os', '4g', '5g', 'ram']
-
-    feature = categorical_features[0]
-    count = usedPhones[feature].value_counts()
-    percent = 100*usedPhones[feature].value_counts(normalize=True)
-    df = pd.DataFrame({'Total sample':count, 'percentage':percent.round(1)})
-    print(df)
-    count.plot(kind='bar', title=feature);
-
-Visualisasikan diagram batang semua fitur numerik sehingga kita bisa analisis dan bandingkan
+Lakukan analisis statistika yang hanya menggunakan satu variabel saja, dan liat persentase data setiap fitur baik itu numerikal maupun kategorikal, kemudian visualisasikan diagram batang kemudian visualisasikan diagram batang semua fitur numerik sehingga kita bisa analisis dan mengambil kesimpulan data tersebut
 
     usedPhones.hist(bins=40, figsize=(18,12))
     plt.show()
@@ -187,7 +165,7 @@ Berikut kesimpulan informasi dari data yang bisa didapat
 - Samsung adalah ponsel yang paling banyak digunakan kembali di samping merek ponsel yang dikategorikan sebagai Lainnya.
 - Rata-rata orang yang menggunakan OS Android
 - Ukuran layar kebanyakan antara 10-15
-- Pengguna 4g dan 5g lebih banyak
+- Device yg mendukung 4g dan 5g lebih banyak
 - Orang-orang telah menggunakan telepon rata-rata antara 600-800 hari yang kira-kira 2-2,5 tahun
 - Rata-rata harga bekas yang dinormalisasi antara 4,2-5rb
 - Rata-rata harga baru normal antara 5-6rb
@@ -200,11 +178,6 @@ Kita bisa melakukan visualisasi sekaligus untuk membandingkan rata-rata **normal
 
 Berikut visualisasi matriks korelasinya
 
-    correlation_matrix = usedPhones.corr().round(2)
-
-    sns.heatmap(data=correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5, )
-    plt.title("Correlation matrix for numerical features ", size=20)
-
 ![alt text](https://github.com/renhardjh/Predictive-Analytics-Used-Phone-Price/blob/main/Images/matrix_correlation_value.png?raw=true)
 
 Dari matriks korelasi tersebut kita dapat simpulkan 5 fitur teratas yang mempunyai relasi tertinggi, sebagai berikut:
@@ -216,52 +189,22 @@ Dari matriks korelasi tersebut kita dapat simpulkan 5 fitur teratas yang mempuny
 - weight: 0.61
 
 Dapat dilihat juga ram tidak memiliki garis karena memiliki nilai dominan atau terbanyak yaitu 4, lebih baik di drop dari datasets
-
-    usedPhones.drop(['ram'], axis=1, inplace=True)
-    usedPhones
     
 ## Data Preparation
 
-Mengubah data kategory yes/no pada fitur 4g dan 5g dengan 1 dan 0 agar model lebih mudah diolah
-
-    dict_cat_symbol = {'yes':1,'no':0}
-    usedPhones['4g'] = usedPhones['4g'].map(dict_cat_symbol)
-    usedPhones['5g'] = usedPhones['5g'].map(dict_cat_symbol)
-
-Melakukan one hot encoding pada setiap fitur categorical
-
-    from sklearn.preprocessing import  OneHotEncoder
-
-    usedPhones = pd.concat([usedPhones, pd.get_dummies(usedPhones['device_brand'], prefix='device_brand')],axis=1)
-    usedPhones = pd.concat([usedPhones, pd.get_dummies(usedPhones['os'], prefix='os')],axis=1)
-    usedPhones.drop(['device_brand','os'], axis=1, inplace=True)
-    usedPhones.head()
+Agar data lebih mudah dikenali oleh model, ada teknik yang bisa digunakan untuk mengubah data fitur kategori dengan 1 dan 0 tujuannya agar dapat meningkatkan performa model, menghilangkan bias ordinal dan membantu algoritma machine learning memahami data kategorikal. Kita bisa melakukan one hot encoding pada setiap fitur categorical. One-hot encoding merupakan sebuah teknik yang digunakan untuk mengubah fitur kategorikal menjadi representasi numerikal yang umum digunakan dalam algoritma _machine learning_. Dalam one-hot encoding, setiap nilai unik dalam fitur kategorikal diubah menjadi sebuah kolom baru dengan nilai biner (0 atau 1), dan kolom lamanya akan dihapus.
     
-Melakukan pengurangan dimensi dengan PCA untuk mengurangi jumlah fitur sambil mempertahankan informasi dalam data. PCA merupakan teknik untuk mereduksi dimensi, mengekstraksi fitur, dan mentransformasi data dari “n-dimensional space” ke dalam sistem berkoordinat baru dengan dimensi m, di mana m lebih kecil dari n.
+Selanjutnya lakukan pengurangan dimensi dengan PCA untuk mengurangi jumlah fitur sambil mempertahankan informasi dalam data. PCA merupakan teknik untuk mereduksi dimensi, mengekstraksi fitur, dan mentransformasi data dari “n-dimensional space” ke dalam sistem berkoordinat baru dengan dimensi m, di mana m lebih kecil dari n. PCA mencari kombinasi linear dari variabel-variabel asli (fitur) yang disebut komponen utama (principal components) untuk merepresentasikan data secara efisien.
 
-    from sklearn.decomposition import PCA
-
-    pca = PCA(n_components=len(dimension_features), random_state=12345)
-    pca.fit(usedPhones[dimension_features])
-    princ_comp = pca.transform(usedPhones[dimension_features])
-
-Menggabungkan fitur dengan korelasi tertinggi kedalam fitur baru dimensi
-
-    from sklearn.decomposition import PCA
-    pca = PCA(n_components=1, random_state=12345)
-    pca.fit(usedPhones[dimension_features])
-    usedPhones['dimension'] = pca.transform(usedPhones.loc[:, (dimension_features)]).flatten()
-    usedPhones.drop(dimension_features, axis=1, inplace=True)
+Prinsip dasar dari PCA adalah mengubah data yang memiliki dimensi tinggi menjadi representasi baru dengan dimensi yang lebih rendah, dengan tetap mempertahankan sebagian besar variasi atau informasi penting dalam data tersebut. PCA mencari arah di mana data memiliki variasi terbesar, yang dikenal sebagai komponen utama pertama. Komponen utama berikutnya dipilih dengan mempertimbangkan batasan bahwa mereka harus ortogonal atau saling tegak lurus dengan komponen sebelumnya dan harus memiliki variasi yang terbesar mungkin. Namun, perlu diingat bahwa PCA juga memiliki beberapa batasan, seperti kehilangan interpretasi variabel asli dan kemampuan mengatasi non-linearitas dalam data. Selain itu, interpretasi hasil PCA dapat menjadi subjektif dan memerlukan pemahaman konteks yang baik untuk mengambil kesimpulan yang tepat dari hasilnya.
 
 ### Memisahkan Data training dan test
 
-Pisahkan data latih dan uji, karena data tidak terlalu banyak maka bagi dengan proporsi 95:5
+Proses berikutnya kita bisa memisahkan data menjadi data latih dan data uji, karena dataset tidak terlalu banyak maka data dibagi dengan proporsi 95:5. Pada dasarnya, tujuan dari pembagian dataset menjadi data latih dan data uji adalah untuk menguji kinerja model pada data yang tidak pernah dilihat sebelumnya. Hal ini penting untuk menghindari overfitting, di mana model dapat "menghafal" data latih dan tidak dapat melakukan generalisasi dengan baik pada data baru.
 
-    from sklearn.model_selection import train_test_split
+Setelah dataset dibagi, model dapat dilatih menggunakan data latih dan kemudian dievaluasi menggunakan data uji. Evaluasi model pada data uji memberikan gambaran tentang seberapa baik model dapat melakukan prediksi pada data yang tidak terlibat dalam proses pelatihan. Pemilihan metode pembagian dataset harus dilakukan dengan hati-hati, tergantung pada karakteristik dan tujuan dari dataset serta jenis model yang akan dikembangkan.
 
-    X = usedPhones.drop(["normalized_used_price"],axis =1)
-    y = usedPhones["normalized_used_price"]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.05, random_state = 12345)
+Untuk melakukannya bisa dilakukan dengan memanggil metode train_test_split dengan memberikan parameter-fitur (X) dan parameter-target (y) bersama dengan parameter lainnya seperti test_size (ukuran data uji), random_state (seed untuk pengacakan), dan lainnya sesuai kebutuhan. Hasil dari metode train_test_split akan mengembalikan empat variabel, yaitu X_train, X_test, y_train, dan y_test. Variabel X_train dan y_train akan berisi data latih, sementara X_test dan y_test akan berisi data uji.
     
 Setelah dibagi dataset akan terpecah menjadi:
 - Total sampel keseluruhan dataset: 3454
@@ -270,15 +213,15 @@ Setelah dibagi dataset akan terpecah menjadi:
 
 ### Scaling and Normalisasi
 
-Pada umumnya disarankan untuk menskalakan dan menormalkan data sebelum melakukan pemodelan untuk memastikan bahwa semua fitur memiliki bobot yang sama dan distribusi yang serupa. Hal ini dapat mencegah fitur yang mendominasi model tertentu, yang dapat menyebabkan overfitting atau hasil yang salah.
+Pada dasarnya data yang perlu dilakukan penskalakan dan penormalkan sebelum melakukan pemodelan untuk memastikan bahwa semua fitur memiliki bobot yang sama dan distribusi yang serupa. Hal ini dapat mencegah fitur yang mendominasi model tertentu, yang dapat menyebabkan overfitting atau hasil yang salah. Teknik _Scaling_ dan Normalisasi adalah langkah-langkah penting dalam pra-pemrosesan data untuk memastikan bahwa fitur-fitur memiliki skala yang seragam dan dapat dibandingkan secara adil. Hal ini dapat membantu meningkatkan kinerja model machine learning dan mengurangi bias yang mungkin muncul akibat perbedaan skala fitur.
 
-    from sklearn.preprocessing import MinMaxScaler
+Scaling adalah proses mengubah skala atau rentang nilai dari fitur-fitur dalam dataset. Tujuannya adalah untuk menghindari perbedaan skala yang signifikan antara fitur-fitur, yang dapat mempengaruhi beberapa algoritma machine learning seperti K-Nearest Neighbors (KNN) atau algoritma yang menggunakan jarak Euclidean.
+    Ada beberapa metode scaling yang umum digunakan:
+        - Min-Max Scaling: Mengubah nilai fitur menjadi rentang yang telah ditentukan, biasanya antara 0 dan 1. Rumus yang digunakan adalah (X - X_min) / (X_max - X_min).
+        - Z-Score Scaling: Mengubah nilai fitur menjadi distribusi normal standar dengan mean 0 dan variansi 1. Rumus yang digunakan adalah (X - mean) / std.
+Pilihan metode scaling yang tepat tergantung pada karakteristik data dan kebutuhan model yang akan digunakan, pada kasus prediksi harga, salah satu metode scaling yang umum digunakan adalah Min-Max Scaling. Metode ini berguna untuk mengubah rentang nilai fitur menjadi antara 0 dan 1, yang sesuai dengan skala harga yang umum digunakan.
 
-    numerical_features = ['weight','release_year','internal_memory','days_used','dimension']
-    scaler = MinMaxScaler()
-    scaler.fit(X_train[numerical_features])
-    X_train[numerical_features] = scaler.transform(X_train.loc[:, numerical_features])
-    X_train[numerical_features].head()
+Pada prediksi harga, penting untuk mempertahankan interpretasi nilai asli harga dalam skala yang dapat dimengerti oleh pengguna atau pemangku kepentingan. Dengan menggunakan Min-Max Scaling, nilai-nilai harga dapat diubah ke dalam rentang yang lebih terkendali, memungkinkan perbandingan yang lebih adil antara fitur-fitur harga dengan fitur-fitur lain dalam dataset.
 
 ## Pengembangan Model
 
@@ -308,44 +251,16 @@ Seperti yang sudah dijelaskan sebelumnya bahwa dalam kasus prediksi harga handph
     - C: Parameter penalti yang mengendalikan trade-off antara kesalahan prediksi dan kompleksitas model.
     - epsilon: Rentang toleransi yang mengendalikan batas kesalahan yang dapat diterima.
 
-Menyiapkan dataframe untuk analisis model
-                                                   
-    models = pd.DataFrame(index=['train_mse', 'test_mse'], 
-                          columns=['KNN', 'Boosting', 'LinearRegression', 'SVR'])
-                          
-Model dengan algoritma K-Nearest Neighbor
+Berikut adalah langkah-langkah umum dalam penerapan model dengan algoritma KNN, Boosting, Linear Regression, SVR:
 
-    from sklearn.neighbors import KNeighborsRegressor
-    from sklearn.metrics import mean_squared_error
-
-    knn = KNeighborsRegressor(n_neighbors=10)
-    knn.fit(X_train, y_train)
-
-    models.loc['train_mse','knn'] = mean_squared_error(y_pred = knn.predict(X_train), y_true=y_train)
-
-Model dengan algoritma AdaBoostingRegressor
-
-    from sklearn.ensemble import AdaBoostRegressor
-
-    boosting = AdaBoostRegressor(learning_rate=0.05, random_state=55)                             
-    boosting.fit(X_train, y_train)
-    models.loc['train_mse','Boosting'] = mean_squared_error(y_pred=boosting.predict(X_train), y_true=y_train)
-
-Model dengan algoritma LinearRegression
-
-    from sklearn.linear_model import LinearRegression
-
-    LG = LinearRegression()                             
-    LG.fit(X_train, y_train)
-    models.loc['train_mse','LinearRegression'] = mean_squared_error(y_pred=LG.predict(X_train), y_true=y_train)
-
-Model dengan algoritma Support Vector Regression
-
-    from sklearn.svm import SVR
-
-    SVR = SVR()                             
-    SVR.fit(X_train, y_train)
-    models.loc['train_mse','SVR'] = mean_squared_error(y_pred=SVR.predict(X_train), y_true=y_train)
+Import library:
+1. Pertama, lakukan impor pustaka atau library yang menyediakan implementasi algoritma KNN. Di Python, Anda dapat menggunakan pustaka scikit-learn dengan mengimpor modul KNeighborsClassifier, AdaBoostingRegressor, LinearRegression dan SVR untuk masalah klasifikasi atau KNeighborsRegressor untuk masalah regresi.
+Persiapan data:
+2. Pastikan dataset Anda telah dipisahkan menjadi fitur-fitur (X) dan target (y) yang sesuai. Fitur-fitur adalah atribut-atribut yang digunakan untuk memprediksi target, sedangkan target adalah nilai yang ingin diprediksi.
+Pembentukan model:
+3. Selanjutnya, Anda perlu membentuk model KNN dengan memanggil fungsi KNeighborsClassifier() untuk masalah klasifikasi atau KNeighborsRegressor() untuk masalah regresi. Anda dapat menentukan parameter-parameter seperti jumlah tetangga (n_neighbors), metrik jarak (metric), dan lainnya sesuai kebutuhan.
+4. Pelatihan model: Setelah model terbentuk, Anda perlu melatihnya dengan menggunakan data latih. Panggil metode fit() pada model dan berikan fitur-fitur latih (X_train) dan target latih (y_train) sebagai parameter.
+5. Prediksi: Setelah melatih model, Anda dapat menggunakannya untuk melakukan prediksi pada data baru yang tidak diketahui. Panggil metode predict() pada model dan berikan fitur-fitur uji (X_test) sebagai parameter. Hasil prediksi akan menghasilkan label atau nilai target yang diprediksi.
 
 ## Evaluasi Model
 
@@ -375,22 +290,13 @@ Tabel 2. Data table hasil evaluasi dan error MSE model menggunakan algoritma KNN
 
 Dari hasil tersebut SVR mempunyai nilai mse terkecil sebesar 0.0549 pada data train dan 0.05734 pada data test, sehingga SVR merupakan algoritma yang paling tepat untuk kasus memprediksi harga ponsel bekas ini, model SVR inilah yang akan digunakan.
 
-subplot hasil mse setiap model untuk membandingkannya
-
-    fig, ax = plt.subplots()
-    mse.sort_values(by='test', ascending=False).plot(kind='barh', ax=ax, zorder=3)
-    ax.grid(zorder=0)
+kemudian lakukan subplot hasil mse setiap model untuk membandingkannya
 
 ![alt text](https://github.com/renhardjh/Predictive-Analytics-Used-Phone-Price/blob/main/Images/mse_result.png?raw=true)
 
 ### Predict menggunakan Model
 
-    prediction = X_test.iloc[:3].copy()
-    pred_dict = {'used_price':y_test[:3]}
-    for name, model in model_dict.items():
-        pred_dict['prediction_'+name] = model.predict(prediction).round(6)
-
-    pd.DataFrame(pred_dict)
+Setelah semua model sudah dilatih dan dievaluasi, langkah selanjutnya ialah melakukan prediksi harga menggunakan data random dari data uji. Kemudian bandingkan data hasil prediksi dengan target harga pada setiap model.
 
 Tabel 3. Data table hasil prediksi model menggunakan algoritma KNN, LinearRegression, Boosting dan SVR
 
