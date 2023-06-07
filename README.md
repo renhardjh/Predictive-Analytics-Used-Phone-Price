@@ -36,7 +36,7 @@ Berdasarkan kondisi yang telah diuraikan sebelumnya, kami akan mengembangkan seb
 1. Bagaimana dapat memberikan panduan harga yang akurat untuk penjual dan pembeli _handphone_ bekas?
 2. Bagaimana dapat memberikan informasi yang transparan tentang faktor-faktor yang memengaruhi harga _handphone_ bekas kepada penjual dan pembeli?
 
-Serta untuk menjawab pertanyaan tersebut, Anda akan membuat _predictive_ modelling dengan tujuan atau goals sebagai berikut:
+Serta untuk menjawab pertanyaan tersebut, kita akan membuat _predictive_ modelling dengan tujuan atau goals sebagai berikut:
 1. Membantu penjual menentukan harga yang adil: Tujuan utama karya ilmiah ini adalah memberikan panduan kepada penjual _handphone_ bekas dalam menetapkan harga yang adil dan kompetitif berdasarkan karakteristik dan kondisi handphone yang mereka jual. Dengan demikian, para penjual dapat meningkatkan peluang mereka untuk menjual handphone bekas dengan harga yang menguntungkan.
 
 2. Memungkinkan pembeli untuk mengevaluasi harga yang wajar: karya ilmiah ini bertujuan memberikan wawasan yang lebih baik kepada pembeli _handphone_ bekas dalam mengevaluasi harga yang wajar untuk _handphone_ yang mereka minati. Dengan memiliki perkiraan harga yang diharapkan, pembeli dapat membuat keputusan yang lebih baik dan memastikan bahwa mereka tidak membayar terlalu mahal atau kurang dari nilai sebenarnya.
@@ -235,14 +235,12 @@ Seperti yang sudah dijelaskan sebelumnya bahwa dalam kasus prediksi harga handph
 
 Berikut adalah langkah-langkah umum dalam penerapan model dengan algoritma KNN, Boosting, Linear Regression, SVR:
 
-Import library:
-1. Pertama, lakukan impor pustaka atau library yang menyediakan implementasi algoritma KNN. Di Python, Anda dapat menggunakan pustaka scikit-learn dengan mengimpor modul KNeighborsClassifier, AdaBoostingRegressor, LinearRegression dan SVR untuk masalah klasifikasi atau KNeighborsRegressor untuk masalah regresi.
-Persiapan data:
-2. Pastikan dataset Anda telah dipisahkan menjadi fitur-fitur (X) dan target (y) yang sesuai. Fitur-fitur adalah atribut-atribut yang digunakan untuk memprediksi target, sedangkan target adalah nilai yang ingin diprediksi.
+1. Import library: Pertama, lakukan impor pustaka atau library yang menyediakan implementasi algoritma KNN. Di Python, kita dapat menggunakan pustaka scikit-learn dengan mengimpor modul KNeighborsClassifier, AdaBoostingRegressor, LinearRegression dan SVR untuk kasus regresi.
+2. Persiapan data: Pastikan dataset kita telah dipisahkan menjadi fitur-fitur (X) dan target (y) yang sesuai. Fitur-fitur adalah atribut-atribut yang digunakan untuk memprediksi target, sedangkan target adalah nilai yang ingin diprediksi.
 Pembentukan model:
-3. Selanjutnya, Anda perlu membentuk model KNN dengan memanggil fungsi KNeighborsClassifier() untuk masalah klasifikasi atau KNeighborsRegressor() untuk masalah regresi. Anda dapat menentukan parameter-parameter seperti jumlah tetangga (n_neighbors), metrik jarak (metric), dan lainnya sesuai kebutuhan.
-4. Pelatihan model: Setelah model terbentuk, Anda perlu melatihnya dengan menggunakan data latih. Panggil metode fit() pada model dan berikan fitur-fitur latih (X_train) dan target latih (y_train) sebagai parameter.
-5. Prediksi: Setelah melatih model, Anda dapat menggunakannya untuk melakukan prediksi pada data baru yang tidak diketahui. Panggil metode predict() pada model dan berikan fitur-fitur uji (X_test) sebagai parameter. Hasil prediksi akan menghasilkan label atau nilai target yang diprediksi.
+3. Selanjutnya, kita perlu membentuk model dengan memanggil fungsi algortima yang ingin diterapkan seperti KNeighborsClassifier(), AdaBoostRegressor(), LinearRegression(), SVR() untuk masalah regresi. Kita dapat menentukan parameter-parameter seperti jumlah tetangga (n_neighbors), metrik jarak (metric), dan lainnya sesuai kebutuhan.
+4. Pelatihan model: Setelah model terbentuk, kita perlu melatihnya dengan menggunakan data latih. Panggil metode fit() pada model dan berikan fitur-fitur latih (X_train) dan target latih (y_train) sebagai parameter.
+5. Prediksi: Setelah melatih model, kita dapat menggunakannya untuk melakukan prediksi pada data baru yang tidak diketahui. Panggil metode predict() pada model dan berikan fitur-fitur uji (X_test) sebagai parameter. Hasil prediksi akan menghasilkan label atau nilai target yang diprediksi.
 
 ## Evaluasi Model
 
