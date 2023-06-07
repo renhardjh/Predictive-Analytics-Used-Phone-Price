@@ -211,35 +211,35 @@ Seperti yang sudah dijelaskan sebelumnya bahwa dalam kasus prediksi harga handph
 
 - K-Nearest Neighbors (KNN): Algoritma KNN menghitung jarak antara titik data yang baru dengan titik data yang ada dalam dataset. Kemudian, menggunakan kelas (harga) dari k titik data terdekat untuk memprediksi kelas (harga) dari titik data yang baru.
     Parameter:
-    - n_neighbors: Jumlah tetangga terdekat yang akan digunakan untuk membuat prediksi.
-    - metric: Metrik jarak yang digunakan untuk mengukur jarak antara titik data (misalnya, Euclidean, Manhattan, dll.).
+    - n_neighbors: Jumlah tetangga terdekat yang akan digunakan untuk membuat prediksi. Kita gunakan n_neighbors = 10. Tetangga-tetangga ini dipilih berdasarkan jarak antara titik data yang akan diprediksi dan titik-titik data lainnya dalam dataset pelatihan.
+    - metric: Metrik jarak yang digunakan untuk mengukur jarak antara titik data. Metrik yang kita gunakan ialah metrik Euclidean.
     
-- Boosting (misalnya, Gradient Boosting atau AdaBoost): Algoritma Boosting membangun serangkaian model prediksi yang lemah secara berurutan. Setiap model baru dibangun untuk memperbaiki kesalahan prediksi model sebelumnya. Prediksi akhir didapatkan dengan menggabungkan prediksi dari semua model.
+- Boosting (dalam kasus ini menggunakan AdaBoost): Algoritma Boosting membangun serangkaian model prediksi yang lemah secara berurutan. Setiap model baru dibangun untuk memperbaiki kesalahan prediksi model sebelumnya. Prediksi akhir didapatkan dengan menggabungkan prediksi dari semua model.
     
-    Parameter (untuk Gradient Boosting):
-    - n_estimators: Jumlah model prediksi (pohon) yang akan dibangun.
-    - learning_rate: Tingkat pembelajaran yang mengontrol kontribusi setiap model terhadap prediksi akhir.
+    Parameter (untuk AdaBoost Boosting):
+    - learning_rate: Masukan nilai 0.05, parameter ini mengontrol kontribusi setiap estimator dalam proses boosting. Learning rate yang lebih tinggi (misalnya, > 1) memberikan bobot yang lebih besar pada setiap estimator, yang dapat menyebabkan overfitting. Sebaliknya, learning rate yang lebih rendah (misalnya, < 1) memberikan bobot yang lebih rendah pada setiap estimator dan membutuhkan lebih banyak estimator untuk mencapai performa yang baik. Pemilihan learning rate yang tepat harus dilakukan secara eksperimen
+    - random_state: Masukan nilai 55, parameter ini menentukan _seed_ untuk generator angka acak. Hal ini memastikan reproduktibilitas dari pelatihan model. Pada umumnya, memilih nilai yang tetap untuk random_state memungkinkan perbandingan yang adil antara model-model yang berbeda.
     
 - Linear Regression: Algoritma Linear Regression mencoba untuk menemukan hubungan linier antara variabel input (fitur) dan variabel target (harga). Itu mencari garis regresi terbaik yang meminimalkan kesalahan antara prediksi dan nilai sebenarnya.
     
     Parameter:
-    - fit_intercept: Menentukan apakah akan ada pergeseran (intercept) dalam model regresi.
-    - normalize: Menentukan apakah fitur-fitur akan dinormalisasi sebelum regresi dilakukan.
+    - fit_intercept: Menentukan apakah akan ada pergeseran (intercept) dalam model regresi. Dalam kasus ini diset menggunakan nilai default: True.
+    - normalize: Menentukan apakah fitur-fitur akan dinormalisasi sebelum regresi dilakukan. Dalam kasus ini diset menggunakan nilai default: True.
     
 - Support Vector Regression (SVR): SVR adalah varian dari Support Vector Machines (SVM) yang digunakan untuk regresi. Tujuannya adalah menemukan fungsi pemetaan yang optimal untuk mencapai margin terbaik dengan mengurangi kesalahan prediksi.
 
     Parameter:
-    - kernel: Fungsi kernel yang digunakan dalam pemetaan (misalnya, linear, polynomial, rbf).
-    - C: Parameter penalti yang mengendalikan trade-off antara kesalahan prediksi dan kompleksitas model.
-    - epsilon: Rentang toleransi yang mengendalikan batas kesalahan yang dapat diterima.
+    - kernel: Fungsi kernel yang digunakan dalam pemetaan (misalnya, linear, polynomial, rbf). Dalam kasus ini cukup diset menggunakan nilai default: 'rbf'.
+    - C: Parameter penalti yang mengendalikan trade-off antara kesalahan prediksi dan kompleksitas model. Dalam kasus ini cukup diset menggunakan nilai default: 1.0.
+    - epsilon: Rentang toleransi yang mengendalikan batas kesalahan yang dapat diterima. Dalam kasus ini cukup diset menggunakan nilai default: 0.1.
 
-Berikut adalah langkah-langkah umum dalam penerapan model dengan algoritma KNN, Boosting, Linear Regression, SVR:
+Berikut adalah langkah-langkahnya dalam penerapan model dengan algoritma KNN, Boosting, Linear Regression, SVR:
 
 1. Import library: Pertama, lakukan impor pustaka atau library yang menyediakan implementasi algoritma KNN. Di Python, kita dapat menggunakan pustaka scikit-learn dengan mengimpor modul KNeighborsClassifier, AdaBoostingRegressor, LinearRegression dan SVR untuk kasus regresi.
 2. Persiapan data: Pastikan dataset kita telah dipisahkan menjadi fitur-fitur (X) dan target (y) yang sesuai. Fitur-fitur adalah atribut-atribut yang digunakan untuk memprediksi target, sedangkan target adalah nilai yang ingin diprediksi.
 Pembentukan model:
 3. Selanjutnya, kita perlu membentuk model dengan memanggil fungsi algortima yang ingin diterapkan seperti KNeighborsClassifier(), AdaBoostRegressor(), LinearRegression(), SVR() untuk masalah regresi. Kita dapat menentukan parameter-parameter seperti jumlah tetangga (n_neighbors), metrik jarak (metric), dan lainnya sesuai kebutuhan.
-4. Pelatihan model: Setelah model terbentuk, kita perlu melatihnya dengan menggunakan data latih. Panggil metode fit() pada model dan berikan fitur-fitur latih (X_train) dan target latih (y_train) sebagai parameter.
+4. Pelatihan model: Setelah model terbentuk, kita perlu melatihnya dengan menggunakan data latih. Panggil metode fit() pada model dan berikan fitur-fitur latih (X_train) dan target latih (y_train) sebagai parameter dari data split sebelumnya yang sudah dipersiapkan.
 5. Prediksi: Setelah melatih model, kita dapat menggunakannya untuk melakukan prediksi pada data baru yang tidak diketahui. Panggil metode predict() pada model dan berikan fitur-fitur uji (X_test) sebagai parameter. Hasil prediksi akan menghasilkan label atau nilai target yang diprediksi.
 
 ## Evaluasi Model
